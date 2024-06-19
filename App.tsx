@@ -1,43 +1,55 @@
-
-
-const styles = StyleSheet.create({})
-import React from 'react';
+import React, { useState } from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
-  useState
   TouchableOpacity
 } from 'react-native';
 
-
 function App(): React.JSX.Element {
+  const [bg, setBg] = useState("#ffffff");
 
-  const [bg,setbg] = useState("#ffffff")
-  const generateColor = ()=>{
-    const hexrange = "0123456789ABCDEF"
-    let color = "#"
-    for (let i = 0; i<6; i++){
-      color += hexrange[Math.floor(Math.random()*16)]
+  const generateColor = () => {
+    const hexRange = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += hexRange[Math.floor(Math.random() * 16)];
     }
-  }
-  return (
-    <><StatusBar> backgroundColor = {"#000000"} </StatusBar><View style={styles.container}>
-      <TouchableOpacity>
-        <View style = {styles.actionBtn}>
-          <Text style = {styles.actionbtntext}> press me</Text>
-        </View>
+    setBg(color);
+  };
 
-      </TouchableOpacity>
-    </View></>
+  return (
+    <>
+      <StatusBar backgroundColor={bg} />
+      <View style={[styles.container, { backgroundColor: bg }]}>
+        <TouchableOpacity onPress={generateColor}>
+          <View style={styles.actionBtn}>
+            <Text style={styles.actionBtnText}>Press me</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  actionBtn: {
+    borderRadius: 12,
+    backgroundColor: "#6B456A",
+    paddingVertical: 10,
+    paddingHorizontal: 10
+  },
+  actionBtnText: {
+    color: '#ffffff',
+    fontSize: 16,
+    textAlign: 'center'
+  }
 });
 
 export default App;
