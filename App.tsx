@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   actionBtnText: {
     color: '#ffffff',
-    fontSize: 16,
+    fontSize: 20,
     textAlign: 'center'
   }
 });
